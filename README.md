@@ -90,27 +90,27 @@ $\frac{\partial L}{\partial h_T}=V^T\left(\widehat{y_T}-y_T\right)$
 
 $\delta_T=V^T\left(\widehat{y_T}-y_T\right)$
 
-$\delta^t=V^T\left(\widehat{y_t}-y_t\right)+\delta^{t+1}\odot\left(1-z_{t+1}\right)\odot\left(1-\widetilde{h_{t+1}}\odot\widetilde{h_{t+1}}\right)\odot U_hr_{t+1}+\delta^{t+1}\odot z_{t+1}+{U_z}^T\delta^{t+1}\odot\left(h_t-\widetilde{h_{t+1}}\right)\odot{\sigma_{z_{t+1}}}^\prime$
+$\delta_t=V^T\left(\widehat{y_t}-y_t\right)+\delta_{t+1}\odot\left(1-z_{t+1}\right)\odot\left(1-\widetilde{h_{t+1}}\odot\widetilde{h_{t+1}}\right)\odot U_hr_{t+1}+\delta_{t+1}\odot z_{t+1}+{U_z}^T\delta_{t+1}\odot\left(h_t-\widetilde{h_{t+1}}\right)\odot{\sigma_{z_{t+1}}}^\prime$
 
 反向传播公式汇总如下：
 
-$\frac{\partial L}{\partial U_r}=\sum_{t=1}^{T}{\left(\left({U_h}^T\left(\delta^t\odot\left(1-z_t\right)\odot\left(1-\widetilde{h_t}\odot\widetilde{h_t}\right)\right)\right)\odot h_{t-1}\odot{\sigma_{r_t}}^\prime\right){h_{t-1}}^T}$
+$\frac{\partial L}{\partial U_r}=\sum_{t=1}^{T}{\left(\left({U_h}^T\left(\delta_t\odot\left(1-z_t\right)\odot\left(1-\widetilde{h_t}\odot\widetilde{h_t}\right)\right)\right)\odot h_{t-1}\odot{\sigma_{r_t}}^\prime\right){h_{t-1}}^T}$
 
-$\frac{\partial L}{\partial W_r}=\sum_{t=1}^{T}{\left(\left({U_h}^T\left(\delta^t\odot\left(1-z_t\right)\odot\left(1-\widetilde{h_t}\odot\widetilde{h_t}\right)\right)\right)\odot h_{t-1}\odot{\sigma_{r_t}}^\prime\right){x_t}^T}$
+$\frac{\partial L}{\partial W_r}=\sum_{t=1}^{T}{\left(\left({U_h}^T\left(\delta_t\odot\left(1-z_t\right)\odot\left(1-\widetilde{h_t}\odot\widetilde{h_t}\right)\right)\right)\odot h_{t-1}\odot{\sigma_{r_t}}^\prime\right){x_t}^T}$
 
-$\frac{\partial L}{\partial b_r}=\sum_{t=1}^{T}{\left({U_h}^T\left(\delta^t\odot\left(1-z_t\right)\odot\left(1-\widetilde{h_t}\odot\widetilde{h_t}\right)\right)\right)\odot h_{t-1}\odot{\sigma_{r_t}}^\prime}$
+$\frac{\partial L}{\partial W_r}=\sum_{t=1}^{T}{\left(\left({U_h}^T\left(\delta_t\odot\left(1-z_t\right)\odot\left(1-\widetilde{h_t}\odot\widetilde{h_t}\right)\right)\right)\odot h_{t-1}\odot{\sigma_{r_t}}^\prime\right){x_t}^T}$
 
-$\frac{\partial L}{\partial U_z}=\sum_{t=1}^{T}{\left(\delta^t\odot{\sigma_{z_t}}^\prime\odot\left(h_{t-1}-\widetilde{h_t}\right)\right){h_{t-1}}^T}$
+$\frac{\partial L}{\partial U_z}=\sum_{t=1}^{T}{\left(\delta_t\odot{\sigma_{z_t}}^\prime\odot\left(h_{t-1}-\widetilde{h_t}\right)\right){h_{t-1}}^T}$
 
-$\frac{\partial L}{\partial W_z}=\sum_{t=1}^{T}{\left(\delta^t\odot{\sigma_{z_t}}^\prime\odot\left(h_{t-1}-\widetilde{h_t}\right)\right){x_t}^T}$
+$\frac{\partial L}{\partial W_z}=\sum_{t=1}^{T}{\left(\delta_t\odot{\sigma_{z_t}}^\prime\odot\left(h_{t-1}-\widetilde{h_t}\right)\right){x_t}^T}$
 
-$\frac{\partial L}{\partial b_z}=\sum_{t=1}^{T}{\delta^t\odot{\sigma_{z_t}}^\prime\odot\left(h_{t-1}-\widetilde{h_t}\right)}$
+$\frac{\partial L}{\partial b_z}=\sum_{t=1}^{T}{\delta_t\odot{\sigma_{z_t}}^\prime\odot\left(h_{t-1}-\widetilde{h_t}\right)}$
 
-$\frac{\partial L}{\partial U_h}=\sum_{t=1}^{T}{\left(\delta^t\odot\left(1-z_t\right)\odot\left(1-\widetilde{h_t}\odot\widetilde{h_t}\right)\right)\left(r_t\odot h_{t-1}\right)^T}$
+$\frac{\partial L}{\partial U_h}=\sum_{t=1}^{T}{\left(\delta_t\odot\left(1-z_t\right)\odot\left(1-\widetilde{h_t}\odot\widetilde{h_t}\right)\right)\left(r_t\odot h_{t-1}\right)^T}$
 
-$\frac{\partial L}{\partial W_h}=\sum_{t=1}^{T}{\left(\delta^t\odot\left(1-z_t\right)\odot\left(1-\widetilde{h_t}\odot\widetilde{h_t}\right)\right){x_t}^T}$
+$\frac{\partial L}{\partial W_h}=\sum_{t=1}^{T}{\left(\delta_t\odot\left(1-z_t\right)\odot\left(1-\widetilde{h_t}\odot\widetilde{h_t}\right)\right){x_t}^T}$
 
-$\frac{\partial L}{\partial b_h}=\sum_{t=1}^{T}{\delta^t\odot\left(1-z_t\right)\odot\left(1-\widetilde{h_t}\odot\widetilde{h_t}\right)}$
+$\frac{\partial L}{\partial b_h}=\sum_{t=1}^{T}{\delta_t\odot\left(1-z_t\right)\odot\left(1-\widetilde{h_t}\odot\widetilde{h_t}\right)}$
 
 $\frac{\partial L}{\partial V}=\sum_{t=1}^{T}{\left(\widehat{y_t}-y_t\right){h_t}^T}$
 
